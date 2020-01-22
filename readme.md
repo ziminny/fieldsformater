@@ -9,7 +9,7 @@ Gerador de campos randomicos formato pt-br
 
 * Instalando o pacote
 ```bash
-composer require ziminny/fieldsformater
+composer require ziminny/generatefieldsrandon
 ```
 * Adicionar arquivo de configuração
 ```bash 
