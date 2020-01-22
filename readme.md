@@ -1,9 +1,58 @@
-<h3> Este projeto se encontra em contrução </h3>
+### Este projeto se encontra em contrução
 
-<h1 align="center">Field Formater LARAVEL</h1>
+# Field Formater LARAVEL
 
-<h4>Sobre</h4>
+#### Sobre
+Gerador de campos randomicos formato pt-br
 
-<p>Gerador de campos randomicos formato pt-br</p>
+#### Instalacao 
+
+* Instalando o pacote
+```bash
+composer require ziminny/fieldsformater
+```
+* Adicionar arquivo de configuração
+```bash 
+php artisan vendor:publish --provider="Ziminny/Fieldformater/main/FieldsFormaterServiceProvider" --tag=configure
+```
+```bash 
+* Adicionar o servidor de serviços em conf/app.php
+    'aliases' => [
+.....
+
+Ziminny/Fieldformater/main/FieldsFormaterServiceProvider
+
+];
+```
+- Gerando dados randômicos
+```php
+<?php
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+use Illuminate\Support\Str;
+use Faker\Generator as Faker;
+use Ziminny\Fieldsformater\main\DataFormater
+
+$factory->define(Model::class, function (Faker $faker) {
+    $cpf = new DataFormater();
+    return [
+        'name' => $cpf->getCpf()// ou $cpf->getCpf()->valid() //  somente cpf validos
+    ];
+});
+```
+
+  - Arquivo dataFormaterAll.php
+  ```php
+<?php
+
+return [
+    'cpf' => [
+        'signal' => false, // Se definido como false ignora os sinais e retorna o valor 123456789
+        'first' => '.',    //
+        'second' => '.', //   Definição de cada intervalo
+        'third' => '-',   //
+    ]
+];
+```
 
 
