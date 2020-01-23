@@ -34,10 +34,6 @@ class DataFormater  {
         return $this;
     }
 
-    public function unique() {
-
-
-    }
 
     public function __toString()
     {

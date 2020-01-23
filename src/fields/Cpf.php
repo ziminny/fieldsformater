@@ -1,21 +1,13 @@
 <?php
-
 namespace Ziminny\Fieldsformater\Fields;
-
 use Ziminny\Fieldsformater\fields\AllFields;
-
 class Cpf extends AllFields{
 
     /** @var int 9 primeiros numeros do CPF */
     private const LENGTHCPF = 9;
-    /** @var string  concatenação no formato 000?000?000*/
-    private $fieldConcat;
+
     /** @var array ultimos 2 dig */
     private $digitsVerif = [];
-    /** @var array  gerador randomico dos 9 digitos*/
-    private $fieldd = [];
-    /** @var string sinal do primeiro intervalo */
-   // private $firstSignal = (string) config('dataFormaterAll.cpf.first');
 
     public function __construct()
     {
@@ -36,23 +28,20 @@ class Cpf extends AllFields{
      *
      */
     public  function sorteableCpf(bool $isValid) :string {
-       /* definições do arquivo config na pasta /conf/dataFormaterAll*/
-        $firstSignal = (string) config('dataFormaterAll.cpf.signal') ? config('dataFormaterAll.cpf.first') : '';
-        $secondSignal = (string) config('dataFormaterAll.cpf.signal') ? config('dataFormaterAll.cpf.second') : '';
-        $thirdSignal = (string) config('dataFormaterAll.cpf.signal') ? config('dataFormaterAll.cpf.third') : '';
+
        /* concatena os 9 digitos do array no formato [123456789] */
         $this->fieldd = implode('',(array)$this->fieldd);
        /* concatena os dois ultimos dig no formato [12]*/
         $this->digitsVerif = implode('',(array)$this->digitsVerif);
        /* define o formato [123?456?789] ou [123456789]*/
-        $this->fieldConcat = substr($this->fieldd,0,3).$firstSignal.substr($this->fieldd,3,3).$secondSignal.substr($this->fieldd,6,3);
+       // $this->fieldConcat = $this->teste(['0-3','3-3','6-3']);
        /* seta no metodo */
-        $this->setData($this->fieldConcat);
+        $this->setData(['0-3','3-3','6-3']);
 
        /* caso CPF nao seja valido*/
         if(!$isValid) {
         /* concatena dentro do construr o valor completo */
-         $this->setFull($this->getData().$thirdSignal.$this->digitsVerif);
+         $this->setFull($this->getData().$this->arqConfigFormat('cpf','third').$this->digitsVerif);
 
              return $this->getFull();
         }
@@ -87,7 +76,7 @@ class Cpf extends AllFields{
         $rest2 = array_sum($secondDigit) % 11;
         $rest2 = $rest2 <2 ? 0 : (11 - $rest2);
         /* seta no construtor*/
-        $this->setFull($this->getData().$thirdSignal.$rest1.''.$rest2);
+        $this->setFull($this->getData().$this->arqConfigFormat('cpf','third').$rest1.''.$rest2);
 
         return $this->getFull();
 
