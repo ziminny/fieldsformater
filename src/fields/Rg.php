@@ -15,17 +15,5 @@ class Rg extends AllFields
         }
     }
 
-    public function getRg() {
-
-        $this->fieldd = implode('', (array) $this->fieldd);
-        $this->fieldConcat = substr($this->fieldd,0,1).'.'.
-            substr($this->fieldd,0,1).'.'.
-            substr($this->fieldd,4,3).'-'.
-            substr($this->fieldd,7,1);
-
-    }
-
-
-
 
 }

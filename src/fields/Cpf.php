@@ -1,7 +1,8 @@
 <?php
 namespace Ziminny\Fieldsformater\Fields;
 use Ziminny\Fieldsformater\fields\AllFields;
-class Cpf extends AllFields{
+use Ziminny\Fieldsformater\main\FieldsInterface;
+class Cpf extends AllFields implements FieldsInterface {
 
     /** @var int 9 primeiros numeros do CPF */
     private const LENGTHCPF = 9;
@@ -27,7 +28,7 @@ class Cpf extends AllFields{
      * @param return string
      *
      */
-    public  function sorteableCpf(bool $isValid) :string {
+    public  function sorteableFields(bool $isValid)  {
 
        /* concatena os 9 digitos do array no formato [123456789] */
         $this->fieldd = implode('',(array)$this->fieldd);
@@ -36,14 +37,28 @@ class Cpf extends AllFields{
        /* define o formato [123?456?789] ou [123456789]*/
        // $this->fieldConcat = $this->teste(['0-3','3-3','6-3']);
        /* seta no metodo */
-        $this->setData(['0-3','3-3','6-3']);
+        $this->setData(
+              $this->fieldd.$this->digitsVerif,
+              [
+                  [0,3],
+                  [3,3],
+                  [6,3],
+                  [9,2]],
+              [
+                  'cpf'=>  /* dentro do metodo fica a configuração dos separadores */
+                         [
+                             'first',
+                             'second',
+                             'third'
+                         ]
+              ]);
 
        /* caso CPF nao seja valido*/
         if(!$isValid) {
         /* concatena dentro do construr o valor completo */
-         $this->setFull($this->getData().$this->arqConfigFormat('cpf','third').$this->digitsVerif);
 
-             return $this->getFull();
+
+             return $this->getData();
         }
 
         /* ----------------------- CPF VALIDO -------------------------- */
@@ -76,9 +91,23 @@ class Cpf extends AllFields{
         $rest2 = array_sum($secondDigit) % 11;
         $rest2 = $rest2 <2 ? 0 : (11 - $rest2);
         /* seta no construtor*/
-        $this->setFull($this->getData().$this->arqConfigFormat('cpf','third').$rest1.''.$rest2);
+        $this->setData(
+            $this->fieldd.$rest1.$rest2,
+            [
+                [0,3],
+                [3,3],
+                [6,3],
+                [9,2]],
+            [
+                'cpf'=>  /* dentro do metodo fica a configuração dos separadores */
+                    [
+                        'first',
+                        'second',
+                        'third'
+                    ]
+            ]);
 
-        return $this->getFull();
+        return $this->getData();
 
     }
 
