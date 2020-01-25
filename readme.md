@@ -1,4 +1,5 @@
-### Este projeto se encontra em contrução
+### Este projeto se encontra em contrução 
+     -- CLASSE CPF PRONTA PARA USO --
 
 # Field Formater LARAVEL
 
@@ -9,7 +10,7 @@ Gerador de campos randomicos formato pt-br
 
 * Instalando o pacote
 ```bash
-composer require ziminny/generatefieldsrandon
+composer require ziminny/fieldsformater
 ```
 * Adicionar arquivo de configuração
 ```bash 
