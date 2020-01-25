@@ -12,12 +12,9 @@ Gerador de campos randomicos formato pt-br
 ```bash
 composer require ziminny/fieldsformater
 ```
-* Adicionar arquivo de configuração
-```bash 
-php artisan vendor:publish --provider="Ziminny/Fieldformater/main/FieldsFormaterServiceProvider" --tag=configure
-```
-```bash 
 * Adicionar o arquivo dataFormaterAll.php
+```bash 
+
 php artisan vendor:publish --provider="Ziminny\Fieldsformater\main\FieldsFormaterServiceProvider" --tag=configure
 ```
 
