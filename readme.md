@@ -23,7 +23,7 @@ php artisan vendor:publish --provider="Ziminny\Fieldsformater\main\FieldsFormate
 * Service Provider
 ```php
 
-    'aliases' => [
+   'aliases' => [
 ...
 
  Ziminny\Fieldsformater\main\FieldsFormaterServiceProvider::class,
