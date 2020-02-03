@@ -46,10 +46,12 @@ use Ziminny\Fieldsformater\main\Fields;
 $factory->define(Cliente::class, function (Faker $faker) {
 
     return [
-        'cpf'  =>  Fields::cpf(), // retorna um cpf valido cpf()->valid()
-        'rg'   =>  Fields::rg(),
-        'cell' =>  Fields::phones()->cellPhone(),
-        'phone'=>  Fields::phones()->residentialPhone()
+        'cpf'         =>  Fields::cpf(), // retorna um cpf valido cpf()->valid()
+        'rg'          =>  Fields::rg(),
+        'outherPhone' => Fields::phones(), // retorno aleatorio cell e residencial
+        'cell' =>        Fields::phones()->cellPhone(),
+        'phone'=>        Fields::phones()->residentialPhone(),
+    
     ];
 
 });
