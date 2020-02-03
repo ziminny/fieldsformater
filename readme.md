@@ -33,6 +33,11 @@ php artisan vendor:publish --provider="Ziminny\Fieldsformater\main\FieldsFormate
 
 ```
 - Gerando dados randômicos
+     ###### criar um factory 
+     ```bash
+  php artisan make:factory ModelFactory
+  ```
+     ###### exemplo de uso no factory
 ```php
 <?php
 
@@ -56,8 +61,19 @@ $factory->define(Cliente::class, function (Faker $faker) {
 
 });
 ```
-
+   ###### criar um seeder 
+   ```bash
+php artisan make:seeder ModelTableSeeder 
+```
+   ###### adicionar a model e a quantidade de dados que deseja gerar
+   ```php
+ public function run()
+ {
+        factory(App\Cliente::class, 20)->create();
+}
+```
   - Arquivo config/dataFormaterAll.php
+      
   ```php
 <?php
 
