@@ -16,11 +16,12 @@
     "classmap": [],
     "files": [
 
-    ]
-  },
-    "psr-4": {
+    ],
+        "psr-4": {
         "Ziminny\\Fieldsformater\\": "src/"
-    },
+    }
+  },
+
   "require": {
     "php": ">=7.2"
   }
