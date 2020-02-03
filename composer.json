@@ -2,7 +2,7 @@
   "name": "ziminny/fieldsformater",
   "description": "Record generator",
   "type": "library",
-  "minimum-stability": "2.0.2",
+  "minimum-stability": "3.*",
   "prefer-stable": true,
     "license": "MIT",
   "authors": [
