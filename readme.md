@@ -1,5 +1,7 @@
 ### Este projeto se encontra em contrução 
-     -- CLASSE CPF PRONTA PARA USO --
+     --   CLASSE CPF PRONTA PARA USO       
+     --   CLASSE RG PRONTA PARA USO        
+     --   CLASSE TELEFONE PRONTA PARA USO 
 
 # Field Formater LARAVEL
 
@@ -44,7 +46,10 @@ use Ziminny\Fieldsformater\main\Fields;
 $factory->define(Cliente::class, function (Faker $faker) {
 
     return [
-        'cpf' =>  Fields::Cpf()->get()->valid(), // retorna um cpf valido
+        'cpf'  =>  Fields::cpf(), // retorna um cpf valido cpf()->valid()
+        'rg'   =>  Fields::rg(),
+        'cell' =>  Fields::phones()->cellPhone(),
+        'phone'=>  Fields::phones()->residentialPhone()
     ];
 
 });
@@ -55,13 +60,33 @@ $factory->define(Cliente::class, function (Faker $faker) {
 <?php
 
 return [
+                          // ********************************* //
+                          //                CPF                //
+                          // ********************************* //
     'cpf' => [
-        'signal' => true, // Se definido como false ignora os sinais e retorna o valor Ex .: 123456789
-        'first' => '.',    //
-        'second' => '.', //   Definição de cada intervalo
-        'third' => '-',   //
-    ]
+        'signal' => true, // Se definido como false ignora os sinais e retorna o valor 12345678910
+        'first' => '.',
+        'second' => '.',  // Definição de cada intervalo
+        'third' => '-',
+
+    ],
+                          // ********************************* //
+                          //                RG                 //
+                          // ********************************* //
+    'rg' => [
+        'signal' => true,
+        'first' => '.',
+        'second' => '.',
+        'third' => '-',
+],
+                          // ********************************* //
+                          //                PHONES             //
+                          // ********************************* //
+
+...
+
 ];
+
 ```
 
 

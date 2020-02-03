@@ -12,14 +12,15 @@
     }
   ],
   "autoload": {
-    "psr-4": {
-      "Ziminny\\Fieldsformater\\": "src/"
-    },
+
     "classmap": [],
     "files": [
 
     ]
   },
+    "psr-4": {
+        "Ziminny\\Fieldsformater\\": "src/"
+    },
   "require": {
     "php": ">=7.2"
   }

@@ -6,7 +6,7 @@ namespace Ziminny\Fieldsformater\Fields;
 
 use phpDocumentor\Reflection\Types\Mixed_;
 
-class AllFields
+abstract class AllFields
 {
 
     private $data;
@@ -34,7 +34,9 @@ class AllFields
      /* pega a chave do array Ex .: CPF */
      $key = key($fieldsNames);
      /* adiciona um valor vazio no inicio do arary p/ nao iniciar com sinal*/
-     array_unshift($fieldsNames[$key],'');
+
+            array_unshift($fieldsNames[$key], '');
+
      /* variavel que une os arrays dos intervalos exemplo [0,3[0,2]... 0302 */
      $uneArray = null;
      /* concatena todos os valores do array */

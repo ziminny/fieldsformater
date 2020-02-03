@@ -2,13 +2,11 @@
 
 namespace Ziminny\Fieldsformater\main;
 
-
-
+use Ziminny\Fieldsformater\fields\Cell;
 use Ziminny\Fieldsformater\fields\Cpf;
-
+use Ziminny\Fieldsformater\fields\Residential;
 use Ziminny\Fieldsformater\fields\Rg;
 use Ziminny\Fieldsformater\main\FieldsInterface;
-
 
 class DataFormater {
 
@@ -20,18 +18,12 @@ class DataFormater {
     public function __construct(FieldsInterface $data)
     {
     $this->data = $data;
-
     }
-
-    public function get()  {
-
+    public function get()
+    {
                 $this->returnData = $this->data->sorteableFields(false);
                 return $this;
-
-        }
-
-
-
+    }
 
     public function valid() {
 
@@ -39,7 +31,19 @@ class DataFormater {
             $this->returnData = $this->data->sorteableFields(true);
             return $this;
         }
-        echo 'OBS : método cpf não encontrado ';
+    }
+
+    public function cellPhone() {
+        $this->data = new Cell();
+            $this->returnData = $this->data->sorteableFields(false);
+            return $this;
+    }
+
+    public function residentialPhone()
+    {
+            $this->data = new Residential();
+            $this->returnData = $this->data->sorteableFields(false);
+            return $this;
 
     }
 
@@ -48,5 +52,4 @@ class DataFormater {
     {
         return $this->returnData;
     }
-
 }

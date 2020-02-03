@@ -2,11 +2,15 @@
 
 namespace Ziminny\Fieldsformater\main;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
+use Ziminny\Fieldsformater\fields\Cell;
+use Ziminny\Fieldsformater\fields\Cpf;
+use Ziminny\Fieldsformater\fields\Residential;
+use Ziminny\Fieldsformater\fields\Rg;
 
 class FieldsFormaterServiceProvider extends ServiceProvider
 {
-
     protected $defer = false;
 
     /**
@@ -14,7 +18,6 @@ class FieldsFormaterServiceProvider extends ServiceProvider
      *
      * @return void
      */
-
 
     /**
      * Bootstrap services.
@@ -28,8 +31,15 @@ class FieldsFormaterServiceProvider extends ServiceProvider
 
     public function register()
     {
-
         $direc = __DIR__ . "/../config/dataFormaterAll.php";
         $this->mergeConfigFrom($direc,'dataFormaterAll');
+
+        $allClassArray = config('dataFormaterAll.class');
+
+     foreach ($allClassArray as $key => $value) {
+    $this->app->singleton($key, function () use ($value) {
+        return new DataFormater(new $value);
+    });
+}
     }
 }

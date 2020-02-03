@@ -2,11 +2,7 @@
 
 namespace Ziminny\Fieldsformater\main;
 
-interface FieldsInterface {
-
+interface FieldsInterface
+{
     function sorteableFields(bool $verif);
-
-
-
-
 }
