@@ -107,5 +107,5 @@ return [
 
 ```
 
-Em caso de duvidas ou ideias favor entrar em contato 
+Em caso de duvidas ou ideias favor entrar em contato </br>
 <a href="#">ziminny@hotmail.com</a>
