@@ -1,0 +1,28 @@
+{
+  "name": "ziminny/fieldsformater",
+  "description": "Record generator",
+  "type": "package",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+    "license": "MIT",
+  "authors": [
+    {
+      "name": "Vagner Oliveira",
+      "email": "ziminny@hotmail.com"
+    }
+  ],
+  "autoload": {
+
+    "classmap": [],
+    "files": [
+
+    ],
+        "psr-4": {
+        "Ziminny\\Fieldsformater\\": "src/"
+    }
+  },
+
+  "require": {
+    "php": ">=7.2"
+  }
+}
